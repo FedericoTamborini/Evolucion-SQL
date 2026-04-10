@@ -18,3 +18,14 @@ ORDER BY store_id, first_name ASC;
 -- El motor de la DB puede procesar el orden de una columna que no está en el SELECT.
 SELECT title FROM film
 ORDER BY replacement_cost DESC; -- Agregué DESC para ver las más caras primero 
+
+--¿Cuáles son las 5 películas más cortas?
+SELECT title, length FROM film
+ORDER BY length ASC
+LIMIT 5;
+
+--Cuales fueron las cinco filas o pagos mas recientes segun la fecha de pago?
+SELECT * FROM payment
+WHERE amount != 0.00
+ORDER BY payment_date
+LIMIT 5
