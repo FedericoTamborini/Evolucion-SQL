@@ -49,3 +49,44 @@ WHERE rental_duration NOT IN (3, 6, 7);
    - Sin paréntesis: SQL mantiene el formato de tabla estándar de columnas independientes.
    Lección: Mantener las columnas separadas por comas sin envolverlas en paréntesis.
 */
+
+--LIKE BÚSQUEDA DE PATRONES (LIKE e ILIKE)
+
+-- ¿Cuántos nombres empiezan con 'J' y apellidos con 'S'?
+SELECT COUNT(first_name) FROM customer
+WHERE first_name LIKE 'J%' AND last_name LIKE 'S%';
+-- Resultado: 5
+
+-- 2. El poder de ILIKE (Insensible a mayúsculas)
+-- Útil cuando no sabemos cómo se cargaron los datos (ej: 'j' minúscula).
+SELECT first_name, last_name FROM customer
+WHERE first_name ILIKE 'j%' AND last_name ILIKE 's%';
+
+-- 3. Búsqueda de secuencias internas (%er%)
+SELECT first_name, last_name FROM customer
+WHERE first_name LIKE '%er%';
+
+-- 4. Uso del Wildcard _ (Representa un solo carácter exacto)
+-- Nombres que tengan cualquier carácter seguido de 'her' y luego lo que sea.
+SELECT first_name, last_name FROM customer
+WHERE first_name LIKE '_her%';
+-- Resultados: Cheryl, Theresa, Sherry, Sherri.
+
+-- 5. CASO PRÁCTICO: Identificar emails que NO pertenecen a la organización.
+-- Buscamos patrones que NO terminen en '.org'
+SELECT first_name, email FROM customer
+WHERE email NOT LIKE '%.org';
+
+-- 6. CASO PRÁCTICO: Actores con nombres de exactamente 6 letras.
+-- Que empiece con 'A', termine con 'a' y tenga 4 espacios definidos en medio.
+SELECT * FROM actor
+WHERE first_name ILIKE 'A____a'
+ORDER BY last_name;
+-- Resultados: Angela Hudson y Angela Witherspoon.
+
+/* 
+   APRENDIZAJE:
+   - % es un comodín para CUALQUIER cantidad de caracteres.
+   - _ es un comodín para exactamente UN carácter.
+   - NOT LIKE/ILIKE es fundamental para limpiar reportes (excluir patrones).
+*/
