@@ -28,7 +28,7 @@ FROM film;
 
 
 
--- 💼 2. Análisis de clientes (nivel negocio)
+-- 2. Análisis de clientes (nivel negocio)
 
 
 -- ¿Cuáles son los 5 clientes que más dinero gastaron?
