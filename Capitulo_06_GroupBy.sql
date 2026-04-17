@@ -43,7 +43,8 @@ LIMIT 5;
 
 
 -- Insight:
--- Estos clientes representan los usuarios más valiosos del negocio.
+-- Los 5 clientes principales concentran una porción desproporcionada del revenue.
+-- Identificarlos permite estrategias de retención diferenciadas.
 
 
 -- Obtener información de esos clientes (emails, nombres)
@@ -54,7 +55,7 @@ SELECT
     last_name,
     email
 FROM customer
-WHERE customer_id IN (148, 526, 178, 137, 144);
+WHERE customer_id IN (148, 526, 178, 137, 144); -- IDs obtenidos de la consulta anterior. En producción se resolvería con un JOIN o subconsulta.
 
 
 
