@@ -1,10 +1,15 @@
 -- INNER JOIN
 -- Une ambas tablas mostrando solo los registros que coinciden en ambas
 
-SELECT * 
-FROM payment
-INNER JOIN customer
-ON payment.customer_id = customer.customer_id;
+SELECT 
+    c.customer_id,
+    c.first_name,
+    c.last_name,
+    p.amount,
+    p.payment_date
+FROM payment AS p
+INNER JOIN customer AS c
+ON p.customer_id = c.customer_id;
 
 
 
